@@ -33,10 +33,9 @@ class DeepExplainer(Explainer):
         Parameters
         ----------
         model :
-            if framework == 'tensorflow', (input : [tf.Tensor], output : tf.Tensor)
-            A pair of TensorFlow tensors (or a list and a tensor) that specifies the input and
-            output of the model to be explained. Note that SHAP values are specific to a single
-            output value, so the output tf.Tensor should be a single dimensional output (,1).
+            If `framework == 'tensorflow'`, you can simply provide a compiled Keras model,
+            even if it has multiple outputs. SHAP values will be computed independently
+            for each output, as they are specific to a single output dimension at a time.
 
             if framework == 'pytorch', an nn.Module object (model), or a tuple (model, layer),
             where both are nn.Module objects.
